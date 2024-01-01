@@ -11,7 +11,7 @@ phases:
     commands:
       - echo Starting pre-build steps...
       - java -version # Verify Java version
-      - ./graldew -version # Verify Gradle version
+      - ./gradlew check
 
   build:
     commands:
