@@ -11,12 +11,12 @@ phases:
     commands:
       - echo Starting pre-build steps...
       - java -version # Verify Java version
-      - gradle -version # Verify Gradle version
+      - ./graldew -version # Verify Gradle version
 
   build:
     commands:
       - echo Building the Spring Boot application...
-      - gradle clean build # Compiles your Spring Boot application
+      - ./graldew clean build # Compiles your Spring Boot application
 
   post_build:
     commands:
