@@ -16,7 +16,7 @@ phases:
   build:
     commands:
       - echo Building the Spring Boot application...
-      - ./graldew clean build # Compiles your Spring Boot application
+      - ./gradlew clean build # Compiles your Spring Boot application
 
   post_build:
     commands:
