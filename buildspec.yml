@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21 # Assuming Corretto 21 supports JDK 21, else specify the correct version
+    commands:
+      - echo Installing Java JDK 21...
+      # If Corretto 21 does not suit your needs, add custom commands to install Oracle JDK 21
+
+  pre_build:
+    commands:
+      - echo Starting pre-build steps...
+      - java -version # Verify Java version
+      - gradle -version # Verify Gradle version
+
+  build:
+    commands:
+      - echo Building the Spring Boot application...
+      - gradle clean build # Compiles your Spring Boot application
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
+artifacts:
+  files:
+    - build/libs/*.jar # Adjust the path to where your Gradle build outputs the JAR file
+
+cache:
+  paths:
+    - '/root/.gradle/caches/**/*' # Cache Gradle dependencies to speed up future builds
+    - '/root/.gradle/wrapper/**/*' # Cache the Gradle wrapper
