@@ -33,7 +33,7 @@ phases:
       - echo Building the docker image
       - echo Building the Docker image... 
       - docker build -t $APPLICATION_NAME:$IMAGE_TAG .
-      - docker tag $APPLICATION_NAME:$IMAGE_TAG 
+      - docker tag $APPLICATION_NAME:$IMAGE_TAG $APPLICATION_NAME:$IMAGE_TAG
       - echo "Listing contents of build/libs directory..."
       - ls -al build/libs
 
