@@ -16,21 +16,19 @@ phases:
       - java -version # Verify Java version
       - ./gradlew check
       - aws --version
-      - echo Logging in to Amazon ECR.... 
-      - $(aws ecr get-login --no-include-email --region us-east-1)
+      - echo Logging in to Amazon ECR & Docker.... 
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 977109810725.dkr.ecr.us-east-1.amazonaws.com
       # Get commit hash value to tag the image
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
       # Replace with your application name
       - APPLICATION_NAME=smartfin-backend
-      # Replace with this 435320931996.dkr.ecr.ap-south-1.amazonaws.com 
       - REPOSITORY_URI=977109810725.dkr.ecr.us-east-1.amazonaws.com/$APPLICATION_NAME
 
   build:
     commands:
       - echo Building the Spring Boot application...
       - ./gradlew clean build # Compiles your Spring Boot application
-      - echo Building the docker image
       - echo Building the Docker image... 
       - docker build -t $APPLICATION_NAME:$IMAGE_TAG .
       - docker tag $APPLICATION_NAME:$IMAGE_TAG $APPLICATION_NAME:$IMAGE_TAG
