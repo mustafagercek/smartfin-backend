@@ -3,10 +3,9 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto21 # Assuming Corretto 21 supports JDK 21, else specify the correct version
+      java: corretto17
     commands:
-      - echo Installing Java JDK 21...
-      # If Corretto 21 does not suit your needs, add custom commands to install Oracle JDK 21
+      - echo Installing Java JDK 17...
 
   pre_build:
     commands:
