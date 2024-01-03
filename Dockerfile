@@ -1,5 +1,5 @@
 # Start with a base image containing Java runtime
-FROM openjdk:21-oracle
+FROM arm32v7/eclipse-temurin:18_36-jdk
 
 # The application's jar file
 ARG JAR_FILE=target/*.jar
